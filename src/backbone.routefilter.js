@@ -47,7 +47,7 @@
       // Create a new callback to replace the original callback that calls
       // the before and after filters as well as the original callback
       // internally.
-      var wrappedCallback = _.bind( function() {
+      var wrappedCallback = function() {
 
         // Call the before filter and if it returns false, run the
         // route's original callback, and after filter. This allows
@@ -110,7 +110,7 @@
         // Call the after filter.
         afterCallback.apply( this, callbackArgs );
 
-      }, this);
+      }.bind(this);
 
       // Call our original route, replacing the callback that was originally
       // passed in when Backbone.Router.route was invoked with our wrapped
